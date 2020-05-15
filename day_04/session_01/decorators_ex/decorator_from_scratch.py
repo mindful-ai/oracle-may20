@@ -1,0 +1,32 @@
+import random
+
+def jumble(funcobj):  # decorator function
+
+    def wrapper(inputstr):  # wrapper function
+        L = list(inputstr)
+        random.shuffle(L)
+        inputword = ''.join(L)
+        print(inputword)
+        funcobj(inputword)
+
+    return wrapper
+
+
+
+def modifystring(s):
+    return ' '.join([c.upper() for c in s])
+
+# ---------------------------------------
+
+
+modifystring = jumble(modifystring)
+print('--->', modifystring)
+print(modifystring('apples'))  # plaeps
+
+'''
+
+A P P L E S
+
+P L A E P S  <= jumbled up form of the string
+
+'''
